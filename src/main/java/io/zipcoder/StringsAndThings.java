@@ -51,6 +51,7 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
+        /*
         int isCounter = 0;
         int notCounter = 0;
         int strLength = input.length();
@@ -68,6 +69,24 @@ public class StringsAndThings {
         }else{
             return false;
         }
+         */
+
+        int isCounter = 0;
+        int notCounter = 0;
+
+        int index = input.indexOf("is");
+        while(index != -1){
+            isCounter++;
+            index = input.indexOf("is", index + 2);
+        }
+
+        index = input.indexOf("not");
+        while(index != -1){
+            notCounter++;
+            index = input.indexOf("not", index + 3);
+        }
+
+        return isCounter == notCounter;
     }
 
     /**
@@ -81,7 +100,7 @@ public class StringsAndThings {
         Boolean isHappy = false;
         char[] inputChar = input.toCharArray();
 
-        for(int i = 1; i < input.length(); i++){
+        for(int i = 0; i < input.length(); i++){
             if(inputChar[i] == 'g'){
                 if(inputChar[i + 1] != 'g' && inputChar[i - 1] != 'g'){
                     isHappy = false;
@@ -106,7 +125,7 @@ public class StringsAndThings {
         int tripleCounter = 0;
         char[] inputChar = input.toCharArray();
 
-        for(int i = 1; i < input.length() - 2; i++){
+        for(int i = 1; i < input.length() - 1; i++){
             if(Character.isLetter(inputChar[i])){
                 if(inputChar[i + 1] == inputChar[i] && inputChar[i - 1] == inputChar[i]){
                     tripleCounter++;
